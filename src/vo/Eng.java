@@ -11,6 +11,11 @@ public class Eng implements Serializable{
 	private String sentence;
 	
 	
+	public Eng() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public Eng(String word, String meaning, String sentence) {
 		super();
 		this.word = word;
