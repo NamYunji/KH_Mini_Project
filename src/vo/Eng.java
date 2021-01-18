@@ -13,7 +13,6 @@ public class Eng implements Serializable{
 	
 	public Eng() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Eng(String word, String meaning, String sentence) {

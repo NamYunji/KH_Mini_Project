@@ -38,15 +38,17 @@ public class TestPanel extends JPanel{
 
 	public TestPanel(JFrame parent) {
 		this.parent = parent;
+		//백그라운드 이미지 그려주기
 		try {
 			image = ImageIO.read(new File("images/test.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
-		// null레이
-		setBackground(Color.DARK_GRAY);
+		// null레이아웃
 		setLayout(null);
+		
+		//component setting
 		JButton btn1 = new JButton("뒤로");
 		txt1 = new JLabel();
 		btn2 = new JButton();
@@ -77,6 +79,7 @@ public class TestPanel extends JPanel{
 
 	}
 	
+	//화면전환 리스너
 	public ActionListener addListener(int num){
 		ActionListener listener = new ActionListener() {
 
@@ -89,6 +92,7 @@ public class TestPanel extends JPanel{
 		};
 		return listener;
 	}
+	//정답확인 리스너
 	public ActionListener addListener(){
 		ActionListener listener = new ActionListener() {
 
@@ -98,13 +102,14 @@ public class TestPanel extends JPanel{
 				if(q.getMeaning().equals(btn.getText())) {
 					JOptionPane.showMessageDialog(null, "정답 입니다");
 				}else
-					JOptionPane.showMessageDialog(null, "오답 입니다.");
+					JOptionPane.showMessageDialog(null, "오답 입니다.\n정답 : "+q.getWord()+" = "+q.getMeaning());
 				reload();
 			}
 		};
 		return listener;
 	}
 	
+	//문제 새로 제출해주는 메서드
 	public void reload() {
 		list=new EngController().loadEngList();
 		size = list.size();	
@@ -145,6 +150,8 @@ public class TestPanel extends JPanel{
 		}
 		
 	}
+	
+	//배열을 섞어주는 알고리즘
 	public void shuffle(int[] array, int count) {
 		int temp, temp2, randomNum1, randomNum2;
 

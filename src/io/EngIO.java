@@ -17,7 +17,7 @@ import vo.Eng;
 
 public class EngIO {
 
-	// 쓰기 (파일을 읽어오고 그뒤에 덧붙여서 출력)
+	// 추가 (파일을 읽어오고 그뒤에 입력받은 값을 덧붙여서 출력)
 	public void insertList(Eng eng) {
 		List<Eng> list = loadEngList();
 		list.add(eng);
@@ -34,9 +34,10 @@ public class EngIO {
 		}
 	}
 
-	//// 삭제 (파일을 읽어오고 그뒤에 삭제 진행후 출력)
+	// 삭제 (파일을 읽어오고 그뒤에 해당하는 객체 삭제 진행후 저장)
 	public void deleteList(Eng eng) {
 		List<Eng> list = loadEngList();
+		//equals, hashcode를 override해줬기때문에 가능
 		list.remove(eng);
 		File f = new File("engList.txt");
 
@@ -51,7 +52,7 @@ public class EngIO {
 		}
 	}
 
-	// 읽기 (파일을 읽어오기만)
+	// 목록 읽기 (파일을 읽어오기만)
 	public List<Eng> loadEngList() {
 		List<Eng> list = new ArrayList<>();
 		File f = new File("engList.txt");
@@ -75,7 +76,7 @@ public class EngIO {
 		return list;
 	}
 
-	// 덮어쓰기
+	// 변경된내용 전체 덮어쓰기
 	public void modifyList(List<Eng> list) {
 		File f = new File("engList.txt");
 		try (ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(f)))) {
